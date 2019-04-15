@@ -33,6 +33,9 @@ We use 1000 ICDAR 2015 training images to fine-tune our model trained on ICDAR 2
 vim multigpu_train.sh & change the configuration by yourself
 sh multigpu_train.sh
 ```
+### Data augmentation when training
+* **random scale**: scale image size to 0.5/1/2/3 randomly.
+* **randome rotation**: each cropped image have a 0.5 probability of a [-30, 30] degree rotation.
 ## Testing
 ```shell
 vim eval.sh & change the configuration by yourself
