@@ -2,7 +2,7 @@ python multigpu_train.py \
 	--gpu_list=0,1 \
 	--input_size=512 \
 	--batch_size_per_gpu=16 \
-        --pretrained_model_path=./checkpoints_train_MLT2017 \
+        --pretrained_model_path=./checkpoints_train_MLT2017/model.ckpt-464002 \
 	--checkpoint_path=./checkpoints/ \
 	--text_scale=512 \
 	--training_data_path=../../Dataset/MLT2019/ICDAR2015_train\
