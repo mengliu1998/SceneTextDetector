@@ -20,6 +20,14 @@ We use both training set(7200 images) and validation set(1800 images) to train o
 |:-----------:|:-------------:|:------------:|
 |60.47|75.68|67.22|
 
+[***ICDAR 2015***](http://rrc.cvc.uab.es/?ch=2&com=evaluation&task=1)
+
+We use 1000 ICDAR 2015 training images to fine-tune our model trained on ICDAR 2017 MLT. The Result is coming soon.
+
+|**Recall(%)**|**Precision(%)**|**F-Score(%)**|
+|:-----------:|:-------------:|:------------:|
+| | | |
+
 ## Training
 ```shell
 vim multigpu_train.sh & change the configuration by yourself
