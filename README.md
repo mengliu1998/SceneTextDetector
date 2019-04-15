@@ -23,12 +23,12 @@ We use both training set(7200 images) and validation set(1800 images) to train o
 ## Training
 ```shell
 vim multigpu_train.sh & change the configuration by yourself
-./multigpu_train.sh
+sh multigpu_train.sh
 ```
 ## Testing
 ```shell
 vim eval.sh & change the configuration by yourself
-./eval.sh
+sh eval.sh
 ```
 ## Calculate the performance
 If the groundtruth of test set is available, we can calculate the performance offline without logging into the public website. 
