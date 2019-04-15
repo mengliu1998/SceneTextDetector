@@ -26,7 +26,7 @@ We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015
 
 |**Recall(%)**|**Precision(%)**|**F-Score(%)**|
 |:-----------:|:-------------:|:------------:|
-| | | |
+|78.91|81.06|79.97|
 
 We use 1000 ICDAR 2015 training images to fine-tune our model trained on ICDAR 2017 MLT. The Result is coming soon.
 
@@ -49,8 +49,13 @@ sh eval.sh
 ```
 ## Calculate the performance
 If the groundtruth of test set is available, we can calculate the performance offline without logging into the public website. 
+When you use this script first time, you need set up Polygon at first:
 ```shell
-cd test_script
+cd test_script/Polygon3-3.0.8
+python setup.py install
+```
+Use the following command to calculate the performance:
+```shell
 vim script.py & change the parameters by yourself
 python script.py -g= -s= -o=   //more information can be found in readme.txt in test_script
 ```
