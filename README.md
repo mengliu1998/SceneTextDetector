@@ -22,11 +22,11 @@ We use both training set(7200 images) and validation set(1800 images) to train o
 
 [***ICDAR 2015***](http://rrc.cvc.uab.es/?ch=2&com=evaluation&task=1)
 
-We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015 directly.
+We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015 directly.(score_map_thresh=0.6, box_thresh=0.15)
 
 |**Recall(%)**|**Precision(%)**|**F-Score(%)**|
 |:-----------:|:-------------:|:------------:|
-|79.25|81.12|80.18|
+|77.80|84.17|80.86|
 
 We use 1000 ICDAR 2015 training images to fine-tune our model trained on ICDAR 2017 MLT. The Result is coming soon.
 
