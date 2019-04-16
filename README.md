@@ -41,7 +41,9 @@ sh multigpu_train.sh
 ```
 ### Data augmentation when training
 * **random scale**: scale image size to 0.5/1/2/3 randomly.
+* **random crop**: 512*512 random samples are cropped from scaled image.
 * **randome rotation**: each cropped image have a 0.5 probability of a [-30, 30] degree rotation.
+* **
 ## Testing
 ```shell
 vim eval.sh & change the configuration by yourself
