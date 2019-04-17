@@ -30,11 +30,12 @@ We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015
 |:-----------:|:-------------:|:------------:|
 |77.80|84.17|80.86|
 
-We use 1000 ICDAR 2015 training images to fine-tune our model trained on ICDAR 2017 MLT. The Result is coming soon.
+We use 1000 ICDAR 2015 training images to fine-tune our model pretrained on ICDAR 2017 MLT.
+
 
 |**Recall(%)**|**Precision(%)**|**F-Score(%)**|
 |:-----------:|:-------------:|:------------:|
-| | | |
+|82.19|88.49|85.22|
 
 ## Training
 ```shell
