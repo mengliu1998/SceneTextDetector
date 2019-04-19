@@ -35,7 +35,7 @@ We use 1000 ICDAR 2015 training images to fine-tune our model pretrained on ICDA
 
 |**Recall(%)**|**Precision(%)**|**F-Score(%)**|
 |:-----------:|:-------------:|:------------:|
-|82.96|88.72|85.74|
+|83.92|88.93|86.35|
 
 ## Training
 ```shell
