@@ -31,7 +31,7 @@ We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015
 |77.80|84.17|80.86|
 
 We use 1000 ICDAR 2015 training images to fine-tune our model pretrained on ICDAR 2017 MLT.
-
+The official result is reported [here](http://rrc.cvc.uab.es/?ch=4&com=evaluation&view=method_info&task=1&m=52961).
 
 |**Recall(%)**|**Precision(%)**|**F-Score(%)**|
 |:-----------:|:-------------:|:------------:|
