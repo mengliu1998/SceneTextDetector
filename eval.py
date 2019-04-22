@@ -66,7 +66,7 @@ def resize_image(im, max_side_len=2400):
     ###
     return im, (ratio_h, ratio_w)
 
-def detect(score_map, geo_map, timer, score_map_thresh=0.8, box_thresh=0.1, nms_thres=0.2):
+def detect(score_map, geo_map, timer, score_map_thresh=0.6, box_thresh=0.15, nms_thres=0.2):
     '''
     restore text boxes from score map and geo map
     :param score_map:
@@ -118,6 +118,20 @@ def sort_poly(p):
     else:
         return p[[0, 3, 2, 1]]
 
+def box_area(box):
+    '''
+    compute area of a polygon
+    :param poly:
+    :return:
+    '''
+    edge = [
+        (box[1,0] - box[0,0]) * (box[1,1] + box[0,1]),
+        (box[2,0] - box[1,0]) * (box[2,1] + box[1,1]),
+        (box[3,0] - box[2,0]) * (box[3,1] + box[2,1]),
+        (box[0,0] - box[3,0]) * (box[0,1] + box[3,1])
+    ]
+    return np.sum(edge)/2.
+
 def main(argv=None):
     import os
     os.environ['CUDA_VISIBLE_DEVICES'] = FLAGS.gpu_list
@@ -167,21 +181,35 @@ def main(argv=None):
                     if boxes is not None:
                         count = -1
                         for box in boxes:
+                            is_clockwise = True
                             count += 1
                             confidence = confi[count] 
                             # to avoid submitting errors
                             box = sort_poly(box.astype(np.int32))
+                            if box_area(box)>0:
+                                is_clockwise = False
                             if np.linalg.norm(box[0] - box[1]) < 5 or np.linalg.norm(box[3]-box[0]) < 5:
                                 continue
                             if FLAGS.confidence:
-                                f.write('{},{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[1, 0], box[1, 1], box[2, 0], box[2, 1], box[3, 0], box[3, 1], confidence))
+                                if is_clockwise:
+                                    f.write('{},{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[1, 0], box[1, 1], box[2, 0], box[2, 1], box[3, 0], box[3, 1], confidence))
+                                else:    
+                                    f.write('{},{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[3,0], box[3,1], box[2,0], box[2,1],box[1, 0], box[1, 1], confidence))
+                                    print('clockwise is corrected!')
                             else:
-                                f.write('{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[1, 0], box[1, 1],box[2, 0], box[2, 1], box[3, 0], box[3, 1]))
+                                if is_clockwise:
+                                    f.write('{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[1, 0], box[1, 1],box[2, 0], box[2, 1], box[3, 0], box[3, 1]))
+                                else:
+                                    f.write('{},{},{},{},{},{},{},{}\r\n'.format(box[0, 0], box[0, 1], box[3,0],box[3,1],box[2,0],box[2,1],box[1, 0], box[1, 1]))
+                                    print('clockwise is corrected!')
                             cv2.polylines(im[:, :, ::-1], [box.astype(np.int32).reshape((-1, 1, 2))], True, color=(0, 0,255), thickness=3)
                 if not FLAGS.no_write_images:
                     img_path = os.path.join(FLAGS.output_dir, os.path.basename(im_fn))
                     cv2.imwrite(img_path, im[:, :, ::-1])
-            print('the average time for test: ',total_time/9000)
+                    score_file = os.path.join(FLAGS.output_dir,'score_{}.jpg'.format(os.path.basename(im_fn).split('.')[0]))
+                    my_score = np.squeeze(score,0)
+                    cv2.imwrite(score_file, my_score*255)
+            print('the average time for test: ',total_time/500)
 
 if __name__ == '__main__':
     tf.app.run()
