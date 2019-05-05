@@ -11,6 +11,8 @@ This code is modified from [EAST](https://github.com/argman/EAST). Thanks to the
 * Shapely
 * OpenCV
 * ...
+## To do list
+- [] add Non-local
 ## Performance
 [***ICDAR 2017 MLT***](http://rrc.cvc.uab.es/?ch=8&com=evaluation&task=1)
 
