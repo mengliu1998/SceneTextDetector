@@ -13,6 +13,8 @@ This code is modified from [EAST](https://github.com/argman/EAST). Thanks to the
 * ...
 ## To do list
 - [ ] Non-local
+- [ ] Expand the crop size from 512 to 640
+- [ ] Use synthetic data set to train
 ## Performance
 [***ICDAR 2017 MLT***](http://rrc.cvc.uab.es/?ch=8&com=evaluation&task=1)
 
