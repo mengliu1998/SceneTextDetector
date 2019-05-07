@@ -12,6 +12,7 @@ This code is modified from [EAST](https://github.com/argman/EAST). Thanks to the
 * OpenCV
 * ...
 ## To do list
+- [ ] Multi-level prediction with FPN + Center-ness
 - [ ] Non-local
 - [ ] Expand the crop size from 512 to 640
 - [ ] Use synthetic data set to train
