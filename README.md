@@ -11,11 +11,6 @@ This code is modified from [EAST](https://github.com/argman/EAST). Thanks to the
 * Shapely
 * OpenCV
 * ...
-## To do list
-- [ ] Multi-level prediction with FPN + Center-ness
-- [ ] Non-local
-- [ ] Expand the crop size from 512 to 640
-- [ ] Use synthetic data set to train
 ## Performance
 [***ICDAR 2017 MLT***](http://rrc.cvc.uab.es/?ch=8&com=evaluation&task=1)
 
@@ -53,6 +48,11 @@ We use the model trained on ICDAR 2017 MLT to test the performance on ICDAR 2015
 |83.16|88.75|85.86|
 
 We use 229 ICDAR 2013 training images to fine-tune our model pretrained on ICDAR 2017 MLT. The result is coming soon.
+## To do list
+- [ ] Multi-level prediction with FPN + Center-ness
+- [ ] Non-local
+- [ ] Expand the crop size from 512 to 640
+- [ ] Use synthetic data set to train
 
 ## Training
 ```shell
